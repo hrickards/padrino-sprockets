@@ -32,9 +32,10 @@ module Padrino
       module AssetTagHelpers
         # Change the folders to /assets/
         def asset_folder_name(kind)
+          base_path = (Padrino.env == :production) ? 'compiled' : 'assets'
           case kind
-          when :css then 'assets'
-          when :js  then 'assets'
+          when :css then base_path
+          when :js  then base_path
           else kind.to_s
           end
         end
